@@ -9,7 +9,7 @@ There aren't that many:
 
 # API
 <details>
- <summary>`GET` `/` `basic welcoming message`</summary>
+ <summary><code>GET</code> <code>/</code> <code>basic welcoming message</code></summary>
 
 #### Responses
 | HTTP code | content-type       | response                                                   |
@@ -23,7 +23,7 @@ $ curl -X GET http://localhost:3030/
 </details>
 
 <details>
- <summary>`GET` `/image` `sends the current canvas`</summary>
+ <summary><code>GET</code> <code>/image</code> <code>sends the current canvas</code></summary>
 
 #### Responses
 | HTTP code | content-type | response |
@@ -37,7 +37,7 @@ $ curl -X GET http://localhost:3030/image > image.png
 </details>
 
 <details>
- <summary>`PUT` `/set-pixel/:x/:y` `set the color of a pixel`</summary>
+ <summary><code>PUT</code> <code>/set-pixel/:x/:y</code> <code>set the color of a pixel</code></summary>
 
 #### Parameters
 | name |  type    | data type | description                   |
