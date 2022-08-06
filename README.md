@@ -84,5 +84,5 @@ $ curl -X PUT -H "X-Token: abc" -H "Content-Type: application/json" -d "{\"color
 </details>
 
 # Future ideas
-- Add "proper" authentication i.e. creating accounts with unique auth tokens
-- Add cooldowns to users to prevent spamming
+- "proper" authentication i.e. creating accounts with unique auth tokens
+- rate limits to prevent spamming
