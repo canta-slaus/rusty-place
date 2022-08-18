@@ -42,7 +42,7 @@ fn get_image(image: Image) -> impl Filter<Extract = impl Reply, Error = Rejectio
         .and_then(handlers::get_image)
 }
 
-/// POST set-pixel/:x/:y
+/// PUT set-pixel/:x/:y
 fn set_pixel(image: Image) -> impl Filter<Extract = impl Reply, Error = Rejection> + Clone {
     warp::path!("set-pixel" / usize / usize)
         .and(warp::put())
