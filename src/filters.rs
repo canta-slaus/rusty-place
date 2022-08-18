@@ -24,7 +24,7 @@ impl warp::reject::Reject for InvalidColor {}
 pub fn routes(image: Image) -> impl Filter<Extract = impl Reply, Error = Rejection> + Clone {
     information()
         .or(get_image(image.clone()))
-        .or(set_pixel(image.clone()))
+        .or(set_pixel(image))
 }
 
 /// GET /

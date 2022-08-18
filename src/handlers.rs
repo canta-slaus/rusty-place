@@ -84,28 +84,28 @@ pub async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> 
     if err.is_not_found() {
         code = StatusCode::NOT_FOUND;
         message = "NOT_FOUND".to_string();
-    } else if let Some(_) = err.find::<warp::reject::LengthRequired>() {
+    } else if err.find::<warp::reject::LengthRequired>().is_some() {
         code = StatusCode::LENGTH_REQUIRED;
         message = "MISSING_CONTENT_LENGTH".to_string();
-    } else if let Some(_) = err.find::<warp::reject::PayloadTooLarge>() {
+    } else if err.find::<warp::reject::PayloadTooLarge>().is_some() {
         code = StatusCode::PAYLOAD_TOO_LARGE;
         message = "PAYLOAD_TOO_LARGE".to_string();
-    } else if let Some(_) = err.find::<warp::body::BodyDeserializeError>() {
+    } else if err.find::<warp::body::BodyDeserializeError>().is_some() {
         code = StatusCode::UNPROCESSABLE_ENTITY;
         message = "MALFORMED_BODY".to_string();
     } else if let Some(e) = err.find::<warp::reject::MissingHeader>() {
         code = StatusCode::BAD_REQUEST;
         message = format!("MISSING_HEADER: {}", e.name());
-    } else if let Some(_) = err.find::<BadAuth>() {
+    } else if err.find::<BadAuth>().is_some() {
         code = StatusCode::UNAUTHORIZED;
         message = "BAD_AUTH".to_string();
-    } else if let Some(_) = err.find::<OutOfBounds>() {
+    } else if err.find::<OutOfBounds>().is_some() {
         code = StatusCode::UNPROCESSABLE_ENTITY;
         message = "OUT_OF_BOUNDS".to_string();
-    } else if let Some(_) = err.find::<InvalidColor>() {
+    } else if err.find::<InvalidColor>().is_some() {
         code = StatusCode::UNPROCESSABLE_ENTITY;
         message = "INVALID_COLOR".to_string();
-    } else if let Some(_) = err.find::<warp::reject::MethodNotAllowed>() {
+    } else if err.find::<warp::reject::MethodNotAllowed>().is_some() {
         code = StatusCode::METHOD_NOT_ALLOWED;
         message = "METHOD_NOT_ALLOWED".to_string();
     } else {
